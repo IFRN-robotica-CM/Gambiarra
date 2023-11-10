@@ -17,6 +17,75 @@ void Estrategia::seguirLinha(){
     } 
   }
 
+void Estrategia::alinharLinha(){
+    while(!sensoresLinha.pppp()){
+        sensoresLinha.atualizarSensoresRefletancia();
+        
+        if(sensoresLinha.desalinhou_direita()){
+           motores.direita();
+        }
+        else if(sensoresLinha.desalinhou_esquerda()){
+           motores.esquerda();
+        }
+        else{
+        motores.paraTras();
+        }
+    }
+  }
+
+void Estrategia::desviarObstaculoPelaEsq(){
+  sensoresLinha.atualizarSensoresRefletancia();
+  
+  motores.girar90Dir();
+ 
+  alinharLinha();
+
+  motores.emFrente();
+  delay(2500);
+  
+  motores.girar90Esq();
+  
+  motores.emFrente();
+  delay(3500);
+  
+  motores.girar90Esq();
+  
+  motores.emFrente();
+  delay(1600);
+  
+  motores.girar90Dir();
+}
+
+void Estrategia::desviarObstaculoPelaDir(){
+  sensoresLinha.atualizarSensoresRefletancia();
+  
+  motores.girar90Esq();
+ 
+  alinharLinha();
+
+  motores.emFrente();
+  delay(2500);
+  
+  motores.girar90Dir();
+  
+  motores.emFrente();
+  delay(3500);
+  
+  motores.girar90Dir();
+  
+  motores.emFrente();
+  delay(1600);
+  
+  motores.girar90Esq();
+}
+
 void Estrategia::executar(){
-  seguirLinha();
+  sonar.atualizarSensorSonar();
+  
+  if(sonar.getSensorSonar() <= 7){
+    desviarObstaculoPelaDir();
+  }
+  else{
+    seguirLinha();
+  }
 }
