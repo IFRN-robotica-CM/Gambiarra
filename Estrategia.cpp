@@ -83,7 +83,7 @@ void Estrategia::executar(){
   sonar.atualizarSensorSonar();
   
   if(sonar.getSensorSonar() <= 7){
-    desviarObstaculoPelaDir();
+    desviarObstaculoPelaEsq();
   }
   else{
     seguirLinha();
