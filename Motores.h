@@ -17,8 +17,8 @@ class Motores {
 
     inline void parar(int tempo){robo.acionarMotores(0, 0); delay(tempo);}
 
-    inline void girar90Dir(){robo.acionarMotores(80, -80); delay(1400);}
-    inline void girar90Esq(){robo.acionarMotores(-80, 80); delay(1400);}
+    inline void girar90Dir(){robo.acionarMotores(80, -80); delay(1300);}
+    inline void girar90Esq(){robo.acionarMotores(-80, 80); delay(1300);}
     
 };
 

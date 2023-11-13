@@ -14,7 +14,30 @@ void Estrategia::seguirLinha(){
     
     else if(sensoresLinha.esquerda()){
       motores.esquerda();
-    } 
+    }
+
+    else if(sensoresLinha.pppp()){
+      motores.emFrente();
+      delay(300);
+      motores.parar(100);
+      
+      robo.habilitaTCS34();
+      sensorCor.atualizarSensoresCor();
+      
+      if(!(sensorCor.verdeEsq()) && sensorCor.verdeDir()){
+        motores.emFrente();
+        delay(200);
+        motores.girar90Esq();
+        }
+        
+      else{
+        motores.paraTras();
+        delay(400);
+        motores.emFrente();
+        delay(100);
+        }
+    }
+    
   }
 
 void Estrategia::alinharLinha(){
