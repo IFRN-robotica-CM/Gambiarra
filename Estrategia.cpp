@@ -46,12 +46,19 @@ void Estrategia::desviarObstaculoPelaEsq(){
   motores.girar90Esq();
   
   motores.emFrente();
-  delay(3500);
+  delay(4000);
   
   motores.girar90Esq();
   
   motores.emFrente();
-  delay(1600);
+  delay(1500);
+
+  sensoresLinha.atualizarSensoresRefletancia();
+ 
+  alinharLinha();
+  
+  motores.emFrente();
+  delay(600);
   
   motores.girar90Dir();
 }
@@ -69,12 +76,19 @@ void Estrategia::desviarObstaculoPelaDir(){
   motores.girar90Dir();
   
   motores.emFrente();
-  delay(3500);
+  delay(4000);
   
   motores.girar90Dir();
   
   motores.emFrente();
-  delay(1600);
+  delay(1500);
+
+  sensoresLinha.atualizarSensoresRefletancia();
+ 
+  alinharLinha();
+  
+  motores.emFrente();
+  delay(600);
   
   motores.girar90Esq();
 }
@@ -83,7 +97,7 @@ void Estrategia::executar(){
   sonar.atualizarSensorSonar();
   
   if(sonar.getSensorSonar() <= 7){
-    desviarObstaculoPelaEsq();
+    desviarObstaculoPelaDir();
   }
   else{
     seguirLinha();
