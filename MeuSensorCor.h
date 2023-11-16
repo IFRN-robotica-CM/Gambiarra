@@ -5,21 +5,47 @@
 
 class MeuSensorCor{
   private:
-    #define VALOR_BRANCO_ESQ 0.20
-    #define VALOR_BRANCO_DIR 0.29
+    #define DIVISOR_H_DIR_VERDE  60
+    #define DIVISOR_S_DIR_VERDE  0.30
+    #define DIVISOR_V_DIR_VERDE  300
+
+    #define DIVISOR_H_DIR_PRETO  60
+    #define DIVISOR_S_DIR_PRETO  0.30
+    #define DIVISOR_V_DIR_PRETO  300
+
+    #define DIVISOR_H_DIR_BRANCO  50
+    #define DIVISOR_S_DIR_BRANCO  0.20
+    #define DIVISOR_V_DIR_BRANCO  700
+
+
+    #define DIVISOR_H_ESQ_VERDE  60
+    #define DIVISOR_S_ESQ_VERDE  0.30
+    #define DIVISOR_V_ESQ_VERDE  600
+
+    #define DIVISOR_H_ESQ_PRETO  60
+    #define DIVISOR_S_ESQ_PRETO  0.27
+    #define DIVISOR_V_ESQ_PRETO  400
+
+    #define DIVISOR_H_ESQ_BRANCO  60
+    #define DIVISOR_S_ESQ_BRANCO  0.22
+    #define DIVISOR_V_ESQ_BRANCO  600
 
     HSV sensorCorDir;
     HSV SensorCorEsq;
   
 	public:
 
-    inline bool  verdeDir(){return(sensorCorDir.h > 60 && sensorCorDir.s < 0.30 && sensorCorDir.v > 300);}
-    inline bool  PretoDir(){return(sensorCorDir.h < 60 && sensorCorDir.s < 0.30 && sensorCorDir.v > 300);}
-    inline bool BrancoDir(){return(sensorCorDir.h > 50 && sensorCorDir.s < 0.20 && sensorCorDir.v > 700);}
+    inline bool  verdeDir(){return(sensorCorDir.h >  DIVISOR_H_DIR_VERDE && sensorCorDir.s <  DIVISOR_S_DIR_VERDE && sensorCorDir.v >  DIVISOR_V_DIR_VERDE);}
+    inline bool  PretoDir(){return(sensorCorDir.h <  DIVISOR_H_DIR_PRETO && sensorCorDir.s <  DIVISOR_S_DIR_PRETO && sensorCorDir.v >  DIVISOR_V_DIR_PRETO);}
+    inline bool BrancoDir(){return(sensorCorDir.h > DIVISOR_H_DIR_BRANCO && sensorCorDir.s < DIVISOR_S_DIR_BRANCO && sensorCorDir.v > DIVISOR_V_DIR_BRANCO);}
 
-    inline bool  verdeEsq(){return(SensorCorEsq.h > 60 && SensorCorEsq.s < 0.22 && SensorCorEsq.v > 600);}
-    inline bool  PretoEsq(){return(SensorCorEsq.h < 60 && SensorCorEsq.s > 0.27 && SensorCorEsq.v > 300);}
-    inline bool BrancoEsq(){return(SensorCorEsq.h > 60 && SensorCorEsq.s < 0.22 && SensorCorEsq.v > 600);}
+    inline bool  verdeEsq(){return(SensorCorEsq.h >  DIVISOR_H_ESQ_VERDE && SensorCorEsq.s <  DIVISOR_S_ESQ_VERDE && SensorCorEsq.v <  DIVISOR_V_ESQ_VERDE);}
+    inline bool  PretoEsq(){return(SensorCorEsq.h <  DIVISOR_H_ESQ_PRETO && SensorCorEsq.s >  DIVISOR_S_ESQ_PRETO && SensorCorEsq.v <  DIVISOR_V_ESQ_PRETO);}
+    inline bool BrancoEsq(){return(SensorCorEsq.h > DIVISOR_H_ESQ_BRANCO && SensorCorEsq.s < DIVISOR_S_ESQ_BRANCO && SensorCorEsq.v > DIVISOR_V_ESQ_BRANCO);}
+
+    inline bool      direita(){return(!(verdeEsq()) && verdeDir());}
+    inline bool     esquerda(){return(!(verdeDir()) && verdeEsq());}
+    inline bool becoSemSaida(){return(verdeDir() && verdeEsq());}
 
     inline void atualizarSensoresCor(){sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();}
 		
