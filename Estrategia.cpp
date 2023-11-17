@@ -19,6 +19,10 @@ void Estrategia::seguirLinha() {
   else if (sensoresLinha.pppp()) {
     fazerVerde();
   }
+//  else if (sensorCor.PretoDir() && sensorCor.PretoEsq()) {
+//      robo.acionarMotores(100, 100);
+//      delay(500);
+//    }
 
 }
 
@@ -29,7 +33,7 @@ void Estrategia::fazerVerde(){
     
     robo.habilitaTCS34();
     sensorCor.atualizarSensoresCor();
-
+    
     if (sensorCor.direita()) {
       motores.emFrente();
       delay(200);
@@ -51,7 +55,7 @@ void Estrategia::fazerVerde(){
 
     else {
       motores.paraTras();
-      delay(400);
+      delay(300);
       motores.emFrente();
       delay(200);
     }
@@ -147,6 +151,7 @@ void Estrategia::desviarObstaculoPelaDir() {
 }
 
 void Estrategia::executar() {
+//  sensoresLinha.getValues();
   sonar.atualizarSensorSonar();
 
   if (sonar.getSensorSonar() <= 7) {

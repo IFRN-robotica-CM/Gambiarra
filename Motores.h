@@ -13,7 +13,7 @@ class Motores {
     inline void emFrente(){robo.acionarMotores(VEL_FRENTE, VEL_FRENTE);}
     inline void  direita(){robo.acionarMotores(VEL_FRENTE,   VEL_TRAS);} 
     inline void esquerda(){robo.acionarMotores(VEL_TRAS,   VEL_FRENTE);}  
-    inline void paraTras(){robo.acionarMotores(VEL_TRAS,     VEL_TRAS);}
+    inline void paraTras(){robo.acionarMotores(-80, -80);}
 
     inline void parar(int tempo){robo.acionarMotores(0, 0); delay(tempo);}
 

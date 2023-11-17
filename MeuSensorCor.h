@@ -47,7 +47,7 @@ class MeuSensorCor{
     inline bool     esquerda(){return(!(verdeDir()) && verdeEsq());}
     inline bool becoSemSaida(){return(verdeDir() && verdeEsq());}
 
-    inline void atualizarSensoresCor(){sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();}
+    inline void atualizarSensoresCor(){sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();}
 		
 
 };

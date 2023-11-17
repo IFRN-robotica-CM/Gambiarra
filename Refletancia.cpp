@@ -6,6 +6,23 @@ void Refletancia::atualizarSensoresRefletancia(){
     SensorLinhaMaisEsq = robo.lerSensorLinhaMaisEsqSemRuido();
     SensorLinhaMaisDir = robo.lerSensorLinhaMaisDirSemRuido();
 }
+
+void Refletancia::getValues(){
+  atualizarSensoresRefletancia();
+  
+  Serial.print("Sensores refletancia: +esq: ");
+  Serial.print(SensorLinhaMaisEsq);
+  Serial.print("; esq:");
+  Serial.print(SensorLinhaEsq); 
+  Serial.print("; dir:");
+  Serial.print(SensorLinhaDir); 
+  Serial.print("; +dir:");
+  Serial.println(SensorLinhaMaisDir);
+
+  delay(500);
+    
+}
+
 void Refletancia::testar(){
   atualizarSensoresRefletancia();
   
