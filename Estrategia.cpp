@@ -29,16 +29,22 @@ void Estrategia::seguirLinha() {
 void Estrategia::fazerVerde(){
     motores.emFrente();
     delay(300);
+    motores.direita();
+    delay(50);
     motores.parar(100);
     
     robo.habilitaTCS34();
     sensorCor.atualizarSensoresCor();
-    
     if (sensorCor.direita()) {
       motores.emFrente();
       delay(200);
       motores.girar90Esq();
     }
+    else if(!(sensorCor.verdeDir()) && !(sensorCor.verdeEsq())){
+      motores.emFrente();
+      delay(500);
+    }
+    
     
     else if (sensorCor.esquerda()) {
       motores.emFrente();
@@ -48,16 +54,18 @@ void Estrategia::fazerVerde(){
 
     else if (sensorCor.becoSemSaida()) {
       motores.emFrente();
-      delay(200);
+      delay(250);
       motores.girar90Dir();
       motores.girar90Dir();
     }
+    
+
 
     else {
       motores.paraTras();
       delay(300);
-      motores.emFrente();
-      delay(200);
+      robo.acionarMotores(100,100);
+      delay(500);
     }
   
   }
@@ -86,12 +94,12 @@ void Estrategia::desviarObstaculoPelaEsq() {
   alinharLinha();
 
   motores.emFrente();
-  delay(2500);
+  delay(2000);
 
   motores.girar90Esq();
 
   motores.emFrente();
-  delay(4000);
+  delay(3000);
 
   motores.girar90Esq();
 
@@ -151,11 +159,15 @@ void Estrategia::desviarObstaculoPelaDir() {
 }
 
 void Estrategia::executar() {
-//  sensoresLinha.getValues();
+  // sensoresLinha.getValues();
+  // robo.habilitaTCS34();
+  // sensorCor.atualizarSensoresCor();
+  // sensorCor.getValues();
+  // sensorCor.testar();
   sonar.atualizarSensorSonar();
 
   if (sonar.getSensorSonar() <= 7) {
-    desviarObstaculoPelaDir();
+    desviarObstaculoPelaEsq();
   }
   else {
     seguirLinha();

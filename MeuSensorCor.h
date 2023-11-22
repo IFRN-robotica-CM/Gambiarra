@@ -27,7 +27,7 @@ class MeuSensorCor{
     #define DIVISOR_V_ESQ_PRETO  400
 
     #define DIVISOR_H_ESQ_BRANCO  60
-    #define DIVISOR_S_ESQ_BRANCO  0.22
+    #define DIVISOR_S_ESQ_BRANCO  0.30
     #define DIVISOR_V_ESQ_BRANCO  600
 
     HSV sensorCorDir;
@@ -43,12 +43,19 @@ class MeuSensorCor{
     inline bool  PretoEsq(){return(SensorCorEsq.h <  DIVISOR_H_ESQ_PRETO && SensorCorEsq.s >  DIVISOR_S_ESQ_PRETO && SensorCorEsq.v <  DIVISOR_V_ESQ_PRETO);}
     inline bool BrancoEsq(){return(SensorCorEsq.h > DIVISOR_H_ESQ_BRANCO && SensorCorEsq.s < DIVISOR_S_ESQ_BRANCO && SensorCorEsq.v > DIVISOR_V_ESQ_BRANCO);}
 
-    inline bool      direita(){return(!(verdeEsq()) && verdeDir());}
-    inline bool     esquerda(){return(!(verdeDir()) && verdeEsq());}
+    inline bool      direita(){return(!(verdeEsq()) && verdeDir() );}
+    inline bool     esquerda(){return(!(verdeDir()) && verdeEsq() );}
     inline bool becoSemSaida(){return(verdeDir() && verdeEsq());}
 
-    inline void atualizarSensoresCor(){sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo();}
+    inline void atualizarSensoresCor(){sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo(); sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo(); sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo(); sensorCorDir = robo.getHSVDireito(); SensorCorEsq = robo.getHSVEsquerdo(); sensorCorDir = robo.getHSVDireito(); delay(500); SensorCorEsq = robo.getHSVEsquerdo();}
 		
+    inline void getValuesEsq(){Serial.print("Valor do sensor de cor Esq: "); Serial.print(SensorCorEsq.h); Serial.print(", "); Serial.print(SensorCorEsq.s); Serial.print(", "); Serial.print(SensorCorEsq.v); Serial.println(); delay(500);}
+    inline void getValuesDir(){Serial.print("Valor do sensor de cor Dir: "); Serial.print(sensorCorDir.h); Serial.print(", "); Serial.print(sensorCorDir.s); Serial.print(", "); Serial.print(sensorCorDir.v); Serial.println(); delay(500);}
+    inline void getValues(){getValuesEsq();getValuesDir();}
+
+    void testar();
+    //inline void testar(){Serial.print("sensor cor Dir:");if(verdeDir()){Serial.println("verde");}else{{Serial.println("Não verde");}Serial.print("sensor cor Esq:");if(verdeEsq()){Serial.println("verde");}else{{Serial.println("Não verde");} delay(500);}
+
 
 };
 
