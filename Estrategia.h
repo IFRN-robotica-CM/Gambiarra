@@ -9,21 +9,12 @@
 
 class Estrategia {
   public:
-
-    void executar();
+      void seguirLinha();
     
   private:
-
-      void seguirLinha();
-      void alinharLinha();
-      void desviarObstaculoPelaEsq();
-      void desviarObstaculoPelaDir();
-      void fazerVerde();
-
-      Refletancia sensoresLinha;
-      Motores motores;
-      Sonar sonar;
-      MeuSensorCor sensorCor;
+    Refletancia refletancia;
+    Motores motores;
+    MeuSensorCor cor;
 };
 
 #endif

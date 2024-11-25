@@ -1,12 +1,12 @@
 #include "Estrategia.h"
 #include <robo_hardware2.h>
 
-Estrategia estrategia;
+Estrategia e;
 
 void setup() {
-  robo.configurar(false);
+  robo.configurar();
   Serial.begin(9600);
 }
 void loop() {
-  estrategia.executar();
+  e.seguirLinha();
 }

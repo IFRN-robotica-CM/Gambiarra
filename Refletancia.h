@@ -7,10 +7,10 @@ class Refletancia {
   
     private:
     
-        #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 50
-        #define DIVISOR_BRANCO_PRETO_ESQ 50
-        #define DIVISOR_BRANCO_PRETO_DIR 40
-        #define DIVISOR_BRANCO_PRETO_MAIS_DIR 50
+        #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 80
+        #define DIVISOR_BRANCO_PRETO_ESQ 70
+        #define DIVISOR_BRANCO_PRETO_DIR 70
+        #define DIVISOR_BRANCO_PRETO_MAIS_DIR 80
 
         float SensorLinhaEsq;
         float SensorLinhaDir; 
@@ -33,8 +33,9 @@ class Refletancia {
         inline bool bbbb() {return (SensorLinhaMaisEsq>DIVISOR_BRANCO_PRETO_MAIS_ESQ && SensorLinhaEsq>DIVISOR_BRANCO_PRETO_ESQ && SensorLinhaDir>DIVISOR_BRANCO_PRETO_DIR && SensorLinhaMaisDir>DIVISOR_BRANCO_PRETO_MAIS_DIR);}
 
         inline bool   frente(){return (bbbb() || bppb());}
-        inline bool  direita(){return (pppb() || ppbb() || pbbb() || bpbb());}
-        inline bool esquerda(){return (bppp() || bbpp() || bbpb() || bbbp());}
+        inline bool esquerda(){return (pppb() || pbbb() || bpbb());}
+        inline bool  direita(){return (bppp() || bbpb() || bbbp());}
+        inline bool  casoCor(){return (pppp() || ppbb() || bbpp());}
         
         inline bool  desalinhou_direita(){return (bppp() || bbpp() || bbpb() || bbbp());}
         inline bool desalinhou_esquerda(){return (pppb() || ppbb() || pbbb() || bpbb() );}

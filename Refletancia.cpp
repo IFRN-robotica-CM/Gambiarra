@@ -1,10 +1,10 @@
 #include "Refletancia.h"
 
 void Refletancia::atualizarSensoresRefletancia(){
-    SensorLinhaEsq = robo.lerSensorLinhaEsqSemRuido();
-    SensorLinhaDir = robo.lerSensorLinhaDirSemRuido(); 
-    SensorLinhaMaisEsq = robo.lerSensorLinhaMaisEsqSemRuido();
-    SensorLinhaMaisDir = robo.lerSensorLinhaMaisDirSemRuido();
+    SensorLinhaEsq     = robo.lerSensorLinhaEsq();
+    SensorLinhaDir     = robo.lerSensorLinhaDir(); 
+    SensorLinhaMaisEsq = robo.lerSensorLinhaMaisEsq();
+    SensorLinhaMaisDir = robo.lerSensorLinhaMaisDir();
 }
 
 void Refletancia::getValues(){

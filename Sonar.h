@@ -6,14 +6,7 @@
 class Sonar {
     private:
 
-        float SensorSonar;
-
      public:
-
-        inline void Sonar::atualizarSensorSonar(){ SensorSonar = robo.lerSensorSonarFrontal();}
-        
-        inline float getSensorSonar() {return (SensorSonar);}
- 
 };
     
 #endif
