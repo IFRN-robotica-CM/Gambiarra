@@ -8,5 +8,5 @@ void setup() {
   Serial.begin(9600);
 }
 void loop() {
-  e.seguirLinha();
+  e.executar();
 }

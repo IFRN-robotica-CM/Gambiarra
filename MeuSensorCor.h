@@ -13,7 +13,7 @@ class MeuSensorCor{
     inline void lerSensoresCor(){leituraSensorCorDir = robo.getRGBSensorDireito(); leituraSensorCorEsq = robo.getRGBSensorEsquerdo();}
 
     inline bool   pretoDir(){return(leituraSensorCorDir.clear < 1400);}
-    inline bool   verdeDir(){return(leituraSensorCorDir.clear < 1900);}
+    inline bool   verdeDir(){return(leituraSensorCorDir.clear < 2200);}
     inline bool   cinzaDir(){return(leituraSensorCorDir.clear < 2500);}
     inline bool  brancoDir(){return(leituraSensorCorDir.clear < 4500);}
 
