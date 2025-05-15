@@ -10,18 +10,22 @@ class MeuSensorCor{
     RGBC leituraSensorCorDir; 
     RGBC leituraSensorCorEsq; 
 
-    inline void lerSensoresCor(){leituraSensorCorDir = robo.getRGBSensorDireito(); leituraSensorCorEsq = robo.getRGBSensorEsquerdo();}
+    enum CORES{VERDE, BRANCO, PRETO, CINZA};
 
-    inline bool   pretoDir(){return(leituraSensorCorDir.clear < 1400);}
-    inline bool   verdeDir(){return(leituraSensorCorDir.clear < 2200);}
-    inline bool   cinzaDir(){return(leituraSensorCorDir.clear < 2500);}
-    inline bool  brancoDir(){return(leituraSensorCorDir.clear < 4500);}
+    inline void lerSensoresCor(){leituraSensorCorDir = robo.lerSensorDeCorDir(); leituraSensorCorEsq = robo.lerSensorDeCorEsq();}
 
-    inline bool brancoEsq(){return(leituraSensorCorEsq.clear < 3000);}
-    inline bool  verdeEsq(){return(leituraSensorCorEsq.clear < 1100);}
-    inline bool  pretoEsq(){return(leituraSensorCorEsq.clear < 500 );}
-    inline bool  cinzaEsq(){return(leituraSensorCorEsq.clear < 1500);}
+    inline bool   pretoDir(){return(leituraSensorCorDir.clear < 800);}
+    inline bool   verdeDir(){return(leituraSensorCorDir.clear < 980);}
+    inline bool   cinzaDir(){return(leituraSensorCorDir.clear > 1130);}
+    inline bool  brancoDir(){return(leituraSensorCorDir.clear > 2000);}
 
+    inline bool brancoEsq(){return(leituraSensorCorEsq.clear > 2000);}
+    inline bool  verdeEsq(){return(leituraSensorCorEsq.clear > 900);}
+    inline bool  pretoEsq(){return(leituraSensorCorEsq.clear < 847);}
+    inline bool  cinzaEsq(){return(leituraSensorCorEsq.clear > 1200);}
+
+    CORES verificaCorDir();
+    CORES verificaCorEsq();
     void lerValores();
 };
 

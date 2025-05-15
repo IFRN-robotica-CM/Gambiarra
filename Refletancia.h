@@ -7,10 +7,10 @@ class Refletancia {
   
     private:
     
-        #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 80
-        #define DIVISOR_BRANCO_PRETO_ESQ 70
-        #define DIVISOR_BRANCO_PRETO_DIR 70
-        #define DIVISOR_BRANCO_PRETO_MAIS_DIR 80
+        #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 90
+        #define DIVISOR_BRANCO_PRETO_ESQ 80
+        #define DIVISOR_BRANCO_PRETO_DIR 80
+        #define DIVISOR_BRANCO_PRETO_MAIS_DIR 90
 
         float SensorLinhaEsq;
         float SensorLinhaDir; 

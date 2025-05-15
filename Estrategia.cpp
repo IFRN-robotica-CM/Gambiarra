@@ -1,8 +1,9 @@
 #include "Estrategia.h"
 
 void Estrategia::seguirLinha(){
-  robo.ligarLedSmdVerde();
+  //lê sensores de linha
   refletancia.atualizarSensoresRefletancia();
+
   if (refletancia.frente()){
     motores.emFrente();
   }
@@ -12,57 +13,80 @@ void Estrategia::seguirLinha(){
   else if(refletancia.esquerda()){
     motores.esquerda();
   }
+
   else if(refletancia.pppp()){
-    robo.ligarLedVermelho();
     motores.parar(1000);
 
-    //descomente apenas para debug :)
-    cor.lerValores();
-
+    //lê sensores de cor
     cor.lerSensoresCor();
-    if(cor.verdeDir() && cor.verdeEsq()){
+    MeuSensorCor::CORES corDir = cor.verificaCorDir();
+    MeuSensorCor::CORES corEsq = cor.verificaCorEsq();
+
+    // if (corDir == cor.VERDE){
+    //   Serial.print(" Dir Verde");
+    // }
+    // else{
+    //   Serial.print(" Dir nãovVerde");
+    // }
+
+    // if (corEsq == cor.VERDE){
+    //   Serial.print(" Esq Verde");
+    // }
+    // else{
+    //   Serial.print(" Esq nãovVerde");
+    // }
+
+    // delay(500);
+
+    if(corDir == cor.VERDE && corEsq == cor.VERDE){
       robo.ligarLedVerde();
+
       motores.emFrente();
       delay(300);
       motores.girar90Esq();
       motores.girar90Esq();
+
       robo.desligarLedVerde();
     }
 
-    else if(cor.verdeEsq() && cor.brancoDir()){
+    else if(!(corDir == cor.VERDE) && corEsq == cor.VERDE){
       robo.ligarLedAmarelo();
+
       motores.emFrente();
       delay(300);
       motores.girar90Esq();
+
       robo.desligarLedAmarelo();
     }
 
-    else if(cor.verdeDir() && cor.brancoEsq()){
+    else if(corDir == cor.VERDE && !(corEsq == cor.VERDE)){
       robo.ligarLedAzul();
+
       motores.emFrente();
       delay(300);
       motores.girar90Dir();
+
       robo.desligarLedAzul();
     }
     else{
       motores.emFrente();
       delay(300);
     }
-    robo.desligarLedVermelho();
+
     estadoDeObstaculo = true;
   }
 
-  else if(refletancia.ppbb()){
-    motores.emFrente();
-    delay(300);
-    motores.girar90Esq();
-  }
-  else if(refletancia.bbpp()){
-    motores.emFrente();
-    delay(300);
-    motores.girar90Dir();
-  }
-  robo.desligarLedSmdVerde();
+//   else if(refletancia.ppbb()){
+//     motores.emFrente();
+//     delay(300);
+//     motores.girar90Esq();
+//   }
+//   else if(refletancia.bbpp()){
+//     motores.emFrente();
+//     delay(300);
+//     motores.girar90Dir();
+//   }
+//   robo.desligarLedSmdVerde();
 }
 
 void Estrategia::executar(){
