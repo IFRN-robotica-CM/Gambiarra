@@ -3,7 +3,7 @@
 void Estrategia::seguirLinha(){
   //lê sensores de linha
   refletancia.atualizarSensoresRefletancia();
-
+  
   if (refletancia.frente()){
     motores.emFrente();
   }
@@ -15,78 +15,51 @@ void Estrategia::seguirLinha(){
   }
 
   else if(refletancia.pppp()){
-    motores.parar(1000);
-
-    //lê sensores de cor
-    cor.lerSensoresCor();
-    MeuSensorCor::CORES corDir = cor.verificaCorDir();
-    MeuSensorCor::CORES corEsq = cor.verificaCorEsq();
-
-    // if (corDir == cor.VERDE){
-    //   Serial.print(" Dir Verde");
-    // }
-    // else{
-    //   Serial.print(" Dir nãovVerde");
-    // }
-
-    // if (corEsq == cor.VERDE){
-    //   Serial.print(" Esq Verde");
-    // }
-    // else{
-    //   Serial.print(" Esq nãovVerde");
-    // }
-
-    // delay(500);
-
-    if(corDir == cor.VERDE && corEsq == cor.VERDE){
-      robo.ligarLedVerde();
-
-      motores.emFrente();
-      delay(300);
-      motores.girar90Esq();
-      motores.girar90Esq();
-
-      robo.desligarLedVerde();
-    }
-
-    else if(!(corDir == cor.VERDE) && corEsq == cor.VERDE){
-      robo.ligarLedAmarelo();
-
-      motores.emFrente();
-      delay(300);
-      motores.girar90Esq();
-
-      robo.desligarLedAmarelo();
-    }
-
-    else if(corDir == cor.VERDE && !(corEsq == cor.VERDE)){
-      robo.ligarLedAzul();
-
-      motores.emFrente();
-      delay(300);
-      motores.girar90Dir();
-
-      robo.desligarLedAzul();
-    }
-    else{
-      motores.emFrente();
-      delay(300);
-    }
-
+    motores.parar(500);
+    fazerVerde();
     estadoDeObstaculo = true;
   }
+}
 
-//   else if(refletancia.ppbb()){
-//     motores.emFrente();
-//     delay(300);
-//     motores.girar90Esq();
-//   }
-//   else if(refletancia.bbpp()){
-//     motores.emFrente();
-//     delay(300);
-//     motores.girar90Dir();
-//   }
-//   robo.desligarLedSmdVerde();
+void Estrategia::fazerVerde(){
+  cor.lerSensoresCor();
+  MeuSensorCor::CORES corDir = cor.verificaCorDir();
+  MeuSensorCor::CORES corEsq = cor.verificaCorEsq();
+
+  if(corDir == cor.VERDE && corEsq == cor.VERDE){
+    robo.ligarLedVerde();
+
+    motores.emFrente();
+    delay(300);
+    motores.girar90Esq();
+    motores.girar90Esq();
+
+    robo.desligarLedVerde();
+  }
+
+  else if(!(corDir == cor.VERDE) && corEsq == cor.VERDE){
+    robo.ligarLedAmarelo();
+
+    motores.emFrente();
+    delay(300);
+    motores.girar90Esq();
+
+    robo.desligarLedAmarelo();
+  }
+
+  else if(corDir == cor.VERDE && !(corEsq == cor.VERDE)){
+    robo.ligarLedAzul();
+
+    motores.emFrente();
+    delay(300);
+    motores.girar90Dir();
+
+    robo.desligarLedAzul();
+  }
+  else{
+    motores.emFrente();
+    delay(300);
+  }
 }
 
 void Estrategia::executar(){

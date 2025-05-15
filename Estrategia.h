@@ -10,6 +10,7 @@
 class Estrategia {
   public:
       void seguirLinha();
+      void fazerVerde();
       void desviarObstaculoDir();
       void desviarObstaculoEsq();
       void executar();
