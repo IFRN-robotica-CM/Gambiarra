@@ -14,6 +14,27 @@ void Estrategia::seguirLinha(){
     motores.esquerda();
   }
 
+  else if(refletancia.bbpp()){
+    if(refletancia.pp() || refletancia.bp()){
+      motores.parar(500);
+      fazerVerde();
+    }else{
+      motores.emFrente();
+      delay(300);
+      motores.girar90Dir();
+    }
+  }
+
+  else if(refletancia.ppbb()){
+    if(refletancia.pp() || refletancia.bp()){
+      motores.parar(500);
+      fazerVerde();
+    }else{
+      motores.emFrente();
+      delay(300);
+      motores.girar90Esq();
+    }
+  }
   else if(refletancia.pppp()){
     motores.parar(500);
     fazerVerde();

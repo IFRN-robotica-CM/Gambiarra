@@ -1,10 +1,12 @@
 #include "Refletancia.h"
 
 void Refletancia::atualizarSensoresRefletancia(){
-    SensorLinhaEsq     = robo.lerSensorLinhaEsq();
-    SensorLinhaDir     = robo.lerSensorLinhaDir(); 
-    SensorLinhaMaisEsq = robo.lerSensorLinhaMaisEsq();
-    SensorLinhaMaisDir = robo.lerSensorLinhaMaisDir();
+    SensorLinhaEsq     = robo.lerSensorLinhaEsqSemRuido();
+    SensorLinhaDir     = robo.lerSensorLinhaDirSemRuido(); 
+    SensorLinhaMaisEsq = robo.lerSensorLinhaMaisEsqSemRuido();
+    SensorLinhaMaisDir = robo.lerSensorLinhaMaisDirSemRuido();
+    SensorLinhaCentral = robo.lerSensorLinhaCentralSemRuido();
+    SensorLinhaFrontal = robo.lerSensorLinhaFrontalSemRuido(); 
 }
 
 void Refletancia::getValues(){
@@ -17,7 +19,11 @@ void Refletancia::getValues(){
   Serial.print("; dir:");
   Serial.print(SensorLinhaDir); 
   Serial.print("; +dir:");
-  Serial.println(SensorLinhaMaisDir);
+  Serial.print(SensorLinhaMaisDir);
+  Serial.print("; cen:");
+  Serial.print(SensorLinhaCentral); 
+  Serial.print("; frontal:");
+  Serial.println(SensorLinhaFrontal);
 
   delay(500);
     
