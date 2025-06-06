@@ -15,6 +15,7 @@ class Estrategia {
       void desviarObstaculoEsq();
       void executar();
       void alinhar();
+      void testarCasoCor();
     
   private:
     Refletancia refletancia;

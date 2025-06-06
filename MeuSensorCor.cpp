@@ -42,18 +42,19 @@ void MeuSensorCor::lerValores(){
   Serial.print(leituraSensorCorEsq.clear);
   Serial.print(", ");
   
-  cor = verificaCorEsq();
+  MeuSensorCor::CORES cor2 = verificaCorEsq();
 
-  if (cor == BRANCO){
+  if (cor2 == BRANCO){
     Serial.print("Branco");
   }
-  else if (cor == CINZA){
+
+  else if (cor2 == CINZA){
     Serial.print("Cinza");
   }
-  else if (cor == PRETO){
+  else if (cor2 == PRETO){
     Serial.print("Preto");
   }
-  else if (cor == VERDE){
+  else if (cor2 == VERDE){
     Serial.print("Verde");
   }
   else{

@@ -1,9 +1,43 @@
 #include "Estrategia.h"
+void Estrategia::testarCasoCor(){
+  refletancia.atualizarSensoresRefletancia();
 
+  if (refletancia.frente()){
+    motores.emFrente();
+  }
+  else if(refletancia.direita()){
+    motores.direita();
+  }
+  else if(refletancia.esquerda()){
+    motores.esquerda();
+  }
+  else if(refletancia.pppp()){
+    motores.parar(500);
+    cor.lerValores();
+  }
+}
 void Estrategia::seguirLinha(){
   //lê sensores de linha
   refletancia.atualizarSensoresRefletancia();
-  
+  if(refletancia.bbbb() && refletancia.bb()){
+    motores.parar(1000);
+    cor.lerSensoresCor();
+    MeuSensorCor::CORES corDir = cor.verificaCorDir();
+    MeuSensorCor::CORES corEsq = cor.verificaCorEsq();
+
+    if(corDir == cor.CINZA && corEsq == cor.CINZA){
+      motores.parar(1000);
+      robo.ligarTodosLeds();
+      delay(2000);
+      robo.desligarTodosLeds();
+    }
+    else{
+      motores.emFrente();
+      delay(100);
+    }
+
+  }
+
   if (refletancia.frente()){
     motores.emFrente();
   }
@@ -16,27 +50,23 @@ void Estrategia::seguirLinha(){
 
   else if(refletancia.bbpp()){
     if(refletancia.pp() || refletancia.bp()){
-      motores.parar(500);
+      motores.parar(1000);
       fazerVerde();
     }else{
-      motores.emFrente();
-      delay(300);
-      motores.girar90Dir();
+      motores.direita();
     }
   }
 
   else if(refletancia.ppbb()){
     if(refletancia.pp() || refletancia.bp()){
-      motores.parar(500);
+      motores.parar(1000);
       fazerVerde();
     }else{
-      motores.emFrente();
-      delay(300);
-      motores.girar90Esq();
+      motores.esquerda();
     }
   }
   else if(refletancia.pppp()){
-    motores.parar(500);
+    motores.parar(1000);
     fazerVerde();
     estadoDeObstaculo = true;
   }
@@ -54,6 +84,8 @@ void Estrategia::fazerVerde(){
     delay(300);
     motores.girar90Esq();
     motores.girar90Esq();
+    motores.emFrente();
+    delay(100);
 
     robo.desligarLedVerde();
   }
