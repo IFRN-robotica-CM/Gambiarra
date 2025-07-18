@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Estrategia.h"
 #include "MeuSensorCor.h"
 #include "Refletancia.h"

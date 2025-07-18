@@ -1,5 +1,4 @@
-#include "Estrategia.h"
-
+#include "../include/Estrategia.h"
 void Estrategia::seguirLinha(){
   //lê sensores de linha
   refletancia.atualizarSensoresRefletancia();

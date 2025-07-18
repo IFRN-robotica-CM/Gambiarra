@@ -1,4 +1,4 @@
-#include "MeuSensorCor.h"
+#include "../include/MeuSensorCor.h"
 
 void MeuSensorCor::lerValores(){
   lerSensoresCor();

@@ -1,6 +1,6 @@
 #ifndef ESTRATEGIA_H
 #define ESTRATEGIA_H
-
+#include <Arduino.h>
 #include <robo_hardware2.h>
 #include "Motores.h"
 #include "Refletancia.h"
