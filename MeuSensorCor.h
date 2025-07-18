@@ -14,15 +14,15 @@ class MeuSensorCor{
 
     inline void lerSensoresCor(){leituraSensorCorDir = robo.lerSensorDeCorDir(); leituraSensorCorEsq = robo.lerSensorDeCorEsq();}
 
-    inline bool   pretoDir(){return(leituraSensorCorDir.clear < 800);}
-    inline bool   verdeDir(){return(leituraSensorCorDir.clear < 980);}
-    inline bool   cinzaDir(){return(leituraSensorCorDir.clear > 1130);}
-    inline bool  brancoDir(){return(leituraSensorCorDir.clear > 1300);}
+    inline bool   pretoDir(){return(leituraSensorCorDir.clear < 700);}
+    inline bool   verdeDir(){return(leituraSensorCorDir.clear > 500);}
+    inline bool   cinzaDir(){return(leituraSensorCorDir.clear < 1500 && leituraSensorCorDir.clear > 1000);}
+    inline bool  brancoDir(){return(leituraSensorCorDir.clear > 1500);}
 
-    inline bool brancoEsq(){return(leituraSensorCorEsq.clear > 1400);}
-    inline bool  verdeEsq(){return(leituraSensorCorEsq.clear > 1000);}
-    inline bool  pretoEsq(){return(leituraSensorCorEsq.clear < 847);}
-    inline bool  cinzaEsq(){return(leituraSensorCorEsq.clear > 1200);}
+    inline bool brancoEsq(){return(leituraSensorCorEsq.clear > 1000);}
+    inline bool  verdeEsq(){return(leituraSensorCorEsq.clear > 500);}
+    inline bool  pretoEsq(){return(leituraSensorCorEsq.clear < 700);}
+    inline bool  cinzaEsq(){return(leituraSensorCorEsq.clear > 700 && leituraSensorCorEsq.clear < 900);}
 
     CORES verificaCorDir();
     CORES verificaCorEsq();

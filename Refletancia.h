@@ -6,12 +6,12 @@
 class Refletancia {
   
   private:
-    #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 50
-    #define DIVISOR_BRANCO_PRETO_ESQ 50
-    #define DIVISOR_BRANCO_PRETO_DIR 50
-    #define DIVISOR_BRANCO_PRETO_MAIS_DIR 60
-    #define DIVISOR_BRANCO_PRETO_CENTRAL 50
-    #define DIVISOR_BRANCO_PRETO_FRONTAL 50
+    #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 45
+    #define DIVISOR_BRANCO_PRETO_ESQ 55
+    #define DIVISOR_BRANCO_PRETO_DIR 71
+    #define DIVISOR_BRANCO_PRETO_MAIS_DIR 40
+    #define DIVISOR_BRANCO_PRETO_CENTRAL 60
+    #define DIVISOR_BRANCO_PRETO_FRONTAL 42
   
     float SensorLinhaEsq;
     float SensorLinhaDir; 
@@ -31,7 +31,7 @@ class Refletancia {
     inline bool bbpp() {return (SensorLinhaMaisEsq>DIVISOR_BRANCO_PRETO_MAIS_ESQ && SensorLinhaEsq>DIVISOR_BRANCO_PRETO_ESQ && SensorLinhaDir<DIVISOR_BRANCO_PRETO_DIR && SensorLinhaMaisDir<DIVISOR_BRANCO_PRETO_MAIS_DIR);}
     inline bool bbpb() {return (SensorLinhaMaisEsq>DIVISOR_BRANCO_PRETO_MAIS_ESQ && SensorLinhaEsq>DIVISOR_BRANCO_PRETO_ESQ && SensorLinhaDir<DIVISOR_BRANCO_PRETO_DIR && SensorLinhaMaisDir>DIVISOR_BRANCO_PRETO_MAIS_DIR);}
     inline bool bbbp() {return (SensorLinhaMaisEsq>DIVISOR_BRANCO_PRETO_MAIS_ESQ && SensorLinhaEsq>DIVISOR_BRANCO_PRETO_ESQ && SensorLinhaDir>DIVISOR_BRANCO_PRETO_DIR && SensorLinhaMaisDir<DIVISOR_BRANCO_PRETO_MAIS_DIR);}
-    inline bool bbbb() {return (SensorLinhaMaisEsq>DIVISOR_BRANCO_PRETO_MAIS_ESQ && SensorLinhaEsq>DIVISOR_BRANCO_PRETO_ESQ && SensorLinhaDir>DIVISOR_BRANCO_PRETO_DIR && SensorLinhaMaisDir>DIVISOR_BRANCO_PRETO_MAIS_DIR);}
+    inline bool bbbb() {return (SensorLinhaMaisEsq>90 && SensorLinhaEsq>90 && SensorLinhaDir>90 && SensorLinhaMaisDir>90);}
     
     inline bool bb() {return (SensorLinhaCentral>DIVISOR_BRANCO_PRETO_CENTRAL && SensorLinhaFrontal>DIVISOR_BRANCO_PRETO_FRONTAL);}
     inline bool bp() {return (SensorLinhaCentral>DIVISOR_BRANCO_PRETO_CENTRAL && SensorLinhaFrontal<DIVISOR_BRANCO_PRETO_FRONTAL);}

@@ -72,11 +72,11 @@ MeuSensorCor::CORES MeuSensorCor::verificaCorDir(){
   else if (cinzaDir()){
     return CINZA;
   }
-  else if (pretoDir()){
-    return PRETO;
-  }
   else if (verdeDir()){
     return VERDE;
+  }
+  else if (pretoDir()){
+    return PRETO;
   }
   
 }
@@ -88,11 +88,12 @@ MeuSensorCor::CORES MeuSensorCor::verificaCorEsq(){
   else if (cinzaEsq()){
     return CINZA;
   }
-  else if (pretoEsq()){
-    return PRETO;
-  }
   else if (verdeEsq()){
     return VERDE;
   }
+  else if (pretoEsq()){
+    return PRETO;
+  }
+  
 
 }

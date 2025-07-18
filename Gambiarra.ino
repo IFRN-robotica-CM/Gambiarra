@@ -4,7 +4,7 @@
 #include <robo_hardware2.h>
 
 Estrategia e;
-MeuSensorCor v;
+MeuSensorCor c;
 Refletancia r;
 
 void setup() {
@@ -12,7 +12,7 @@ void setup() {
   Serial.begin(9600);
 }
 void loop() {
+  e.executar();
   // r.getValues();
-  e.seguirLinha();
-  // v.lerValores();
+  // c.lerValores();
 }
