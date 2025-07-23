@@ -30,8 +30,10 @@ void Estrategia::fazerVerde(){
 
     motores.emFrente();
     delay(300);
-    motores.girar90Esq();
-    motores.girar90Esq();
+    robo.acionarMotores(80, -80);
+    delay(2200);
+    motores.emFrente();
+    delay(200);
 
     robo.desligarLedVerde();
   }
@@ -40,7 +42,7 @@ void Estrategia::fazerVerde(){
     robo.ligarLedAmarelo();
 
     motores.emFrente();
-    delay(300);
+    delay(100);
     motores.girar90Esq();
 
     robo.desligarLedAmarelo();
@@ -50,7 +52,7 @@ void Estrategia::fazerVerde(){
     robo.ligarLedAzul();
 
     motores.emFrente();
-    delay(300);
+    delay(100);
     motores.girar90Dir();
 
     robo.desligarLedAzul();
