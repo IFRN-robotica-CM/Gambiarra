@@ -8,7 +8,7 @@ class Laiser{
       int ValorSensorLaizer;
     public:
       inline void atualizarSensorLaiser(){ValorSensorLaizer = robo.lerSensorLaserFrontal();}
-      inline bool  identificouObstaculo(){ return(ValorSensorLaizer <= 70);}
+      inline bool  identificouObstaculo(){ return(ValorSensorLaizer <= 90);}
 };
     
 #endif

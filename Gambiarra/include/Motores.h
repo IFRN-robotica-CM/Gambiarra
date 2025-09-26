@@ -19,7 +19,12 @@ class Motores {
 
     inline void girar90Dir(){robo.acionarMotores(-80, 80); delay(1000);}
     inline void girar90Esq(){robo.acionarMotores(80, -80); delay(1000);}
+
+    inline void girar45Dir(){robo.acionarMotores(-80, 80); delay(500);}
+    inline void girar45Esq(){robo.acionarMotores(80, -80); delay(500);}
     
+    inline void girar22Dir(){robo.acionarMotores(-80, 80); delay(200);}
+    inline void girar22Esq(){robo.acionarMotores(80, -80); delay(200);}
 };
 
 #endif

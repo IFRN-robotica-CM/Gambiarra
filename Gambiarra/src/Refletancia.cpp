@@ -5,6 +5,8 @@ void Refletancia::atualizarSensoresRefletancia(){
     SensorLinhaDir     = robo.lerSensorLinhaDir(); 
     SensorLinhaMaisEsq = robo.lerSensorLinhaMaisEsq();
     SensorLinhaMaisDir = robo.lerSensorLinhaMaisDir();
+    SensorLinhaCentral = robo.lerSensorLinhaCentral();
+    SensorLinhaFrontal = robo.lerSensorLinhaFrontal(); 
 }
 
 void Refletancia::getValues(){
@@ -17,7 +19,11 @@ void Refletancia::getValues(){
   Serial.print("; dir:");
   Serial.print(SensorLinhaDir); 
   Serial.print("; +dir:");
-  Serial.println(SensorLinhaMaisDir);
+  Serial.print(SensorLinhaMaisDir);
+  Serial.print("; central:");
+  Serial.print(SensorLinhaCentral);
+  Serial.print("; frontal:");
+  Serial.println(SensorLinhaFrontal);
 
   delay(500);
     
@@ -58,6 +64,12 @@ void Refletancia::testar(){
   }
    else if(bbbp()){
     Serial.println("BBBP"); 
+  }
+  else if(bp()){
+    Serial.println("BP"); 
+  }
+  else if(pb()){
+    Serial.println("PB"); 
   }
   
 }

@@ -61,7 +61,7 @@ void MeuSensorCor::lerValores(){
   }
   
   Serial.println();
-  delay(500);
+  //delay(500);
 }
 
 MeuSensorCor::CORES MeuSensorCor::verificaCorDir(){
@@ -77,7 +77,6 @@ MeuSensorCor::CORES MeuSensorCor::verificaCorDir(){
   else if (pretoDir()){
     return PRETO;
   }
-  
 }
 
 MeuSensorCor::CORES MeuSensorCor::verificaCorEsq(){
