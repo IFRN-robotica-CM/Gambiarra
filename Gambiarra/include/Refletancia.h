@@ -13,12 +13,12 @@ class Refletancia {
     // #define DIVISOR_BRANCO_PRETO_CENTRAL 0.1
     // #define DIVISOR_BRANCO_PRETO_FRONTAL 52
 
-    #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 42
-    #define DIVISOR_BRANCO_PRETO_ESQ 45
-    #define DIVISOR_BRANCO_PRETO_DIR 45
-    #define DIVISOR_BRANCO_PRETO_MAIS_DIR 45
-    #define DIVISOR_BRANCO_PRETO_CENTRAL 1
-    #define DIVISOR_BRANCO_PRETO_FRONTAL 38
+    #define DIVISOR_BRANCO_PRETO_MAIS_ESQ 70
+    #define DIVISOR_BRANCO_PRETO_ESQ 60
+    #define DIVISOR_BRANCO_PRETO_DIR 70
+    #define DIVISOR_BRANCO_PRETO_MAIS_DIR 60
+    #define DIVISOR_BRANCO_PRETO_CENTRAL 30
+    #define DIVISOR_BRANCO_PRETO_FRONTAL 30
 
     #define DIVISOR_CINZA 96
     
@@ -54,11 +54,20 @@ class Refletancia {
                                       && SensorLinhaMaisDir<DIVISOR_CINZA && SensorLinhaMaisDir>DIVISOR_BRANCO_PRETO_MAIS_DIR
                                       && SensorLinhaFrontal<DIVISOR_CINZA && SensorLinhaFrontal>DIVISOR_BRANCO_PRETO_FRONTAL
                                     );}
+    
+    inline bool           gap(){return (bbbb() && bb());}
+    inline bool        frente(){return ((bbbb() && pp()) || (bppb() && pp()));}
+    inline bool  encruzilhada(){return (pppp() && pp());}
+    inline bool encruzilhadaT(){return (pppp() && pb());}
 
-    inline bool   frente(){return (bbbb() || bppb());}
+    inline bool  noventaGrausDir(){return (bbpp() && pb());}
+    inline bool  noventaGrausEsq(){return (ppbb() && pb());}
+
+    inline bool  noventaGrausDirVerde(){return (bbpp() && pp());}
+    inline bool  noventaGrausEsqVerde(){return (ppbb() && pp());}
+
     inline bool esquerda(){return (pppb() || pbbb() || bpbb());}
     inline bool  direita(){return (bppp() || bbpb() || bbbp());}
-    inline bool  casoCor(){return (pppp() || ppbb() || bbpp());}
 
     
     inline bool  desalinhou_direita(){return (bppp() || bbpp() || bbpb() || bbbp());}

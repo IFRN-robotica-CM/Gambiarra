@@ -1,86 +1,75 @@
 #include "../include/Estrategia.h"
 
-void Estrategia::seguirLinha(){
-  //lê sensores de linha
+void Estrategia::seguirLinha() {
+  // Atualiza leituras
   refletancia.atualizarSensoresRefletancia();
+
   
-  if (refletancia.frente()){
+  if (refletancia.frente() || refletancia.gap()) {
     motores.emFrente();
   }
-  else if(refletancia.direita()){
+  else if (refletancia.noventaGrausDir() || refletancia.direita()) {
     motores.direita();
   }
-  else if(refletancia.esquerda()){
+  else if (refletancia.noventaGrausEsq() || refletancia.esquerda()) {
     motores.esquerda();
   }
-  else if(refletancia.bbpp()){
-    if(refletancia.pp() || refletancia.bp()){
-      motores.parar(1000);
-      fazerVerde();
-    }else{
-      motores.direita();
-    }
+  else if (refletancia.noventaGrausDirVerde()){
+    fazerVerde();
+  }
+  else if (refletancia.noventaGrausEsqVerde()){
+    fazerVerde();
+  }
+  else if (refletancia.encruzilhada()){
+    fazerVerde();
+  }
+  else if (refletancia.encruzilhadaT()){
+    fazerVerde();
+  }
+  else {
+    motores.emFrente();
   }
 
-  else if(refletancia.ppbb()){
-    if(refletancia.pp() || refletancia.bp()){
-      motores.parar(1000);
-      fazerVerde();
-    }else{
-      motores.esquerda();
-    }
-  }
-  else if(refletancia.pppp()){
-    motores.parar(500);
-    delay(100);
-    delay(100);
-    fazerVerde();
-    estadoDeObstaculo = true;
-  }
+  estadoDeObstaculo = true;
 }
 
-void Estrategia::fazerVerde(){
-  cor.lerSensoresCor();
-  MeuSensorCor::CORES corDir = cor.verificaCorDir();
-  MeuSensorCor::CORES corEsq = cor.verificaCorEsq();
-
-  if(corDir == cor.VERDE && corEsq == cor.VERDE){
+ void Estrategia::fazerVerde(){
+  motores.parar(500);
+  String esq = robo.lerNomeCorEsq();
+  String dir = robo.lerNomeCorDir();
+  Serial.println("Esq: " + esq + "  |  Dir: " + dir);
+  Serial.println(esq != "Verde");
+  
+  if (esq == "Verde" && dir == "Verde"){
     robo.ligarLedVerde();
-
-    motores.emFrente();
-    delay(300);
-    robo.acionarMotores(80, -80);
-    delay(2200);
-    motores.emFrente();
-    delay(200);
-
-    robo.desligarLedVerde();
-  }
-
-  else if(!(corDir == cor.VERDE) && corEsq == cor.VERDE){
-    robo.ligarLedAmarelo();
-
-    motores.emFrente();
-    delay(100);
-    motores.girar90Esq();
-
-    robo.desligarLedAmarelo();
-  }
-
-  else if(corDir == cor.VERDE && !(corEsq == cor.VERDE)){
-    robo.ligarLedAzul();
-
     motores.emFrente();
     delay(100);
     motores.girar90Dir();
+    motores.girar90Dir();
+    robo.desligarLedVerde();
+  }
 
+  if (esq != "Verde" && dir == "Verde" ){
+    robo.ligarLedAzul();
+    motores.emFrente();
+    delay(100);
+    motores.girar90Dir();
     robo.desligarLedAzul();
+  }
+
+  if (esq == "Verde" && dir != "Verde"){
+    robo.ligarLedAmarelo();
+    motores.emFrente();
+    delay(100);
+    motores.girar90Esq();
+    robo.desligarLedAmarelo();
   }
   else{
     motores.emFrente();
-    delay(300);
+    delay(100);
   }
-}
+
+ }
 
 void Estrategia::executar(){
   dist.atualizarSensorLaiser();
@@ -89,25 +78,25 @@ void Estrategia::executar(){
   if (dist.identificouObstaculo() && estadoDeObstaculo){
     desviarObstaculoEsq();
   }
-  else if (refletancia.IdentificaArea()){
-    motores.emFrente();
-    delay(100);
-    motores.parar(1000);
+  // else if (refletancia.IdentificaArea()){
+  //   motores.emFrente();
+  //   delay(100);
+  //   motores.parar(1000);
 
-    cor.lerSensoresCor();
-    MeuSensorCor::CORES corDir = cor.verificaCorDir();
-    MeuSensorCor::CORES corEsq = cor.verificaCorEsq();
+  //   cor.lerSensoresCor();
+  //   MeuSensorCor::CORES corDir = cor.verificaCorDir();
+  //   MeuSensorCor::CORES corEsq = cor.verificaCorEsq();
 
-    if(corDir == cor.CINZA && corEsq == cor.CINZA){
-      robo.ligarTodosLeds();
-      resgatar();
-      robo.desligarTodosLeds();
-    }
-    else{
-      motores.emFrente();
-      delay(100);
-    }
-  }
+  //   if(corDir == cor.CINZA && corEsq == cor.CINZA){
+  //     robo.ligarTodosLeds();
+  //     resgatar();
+  //     robo.desligarTodosLeds();
+  //   }
+  //   else{
+  //     motores.emFrente();
+  //     delay(100);
+  //   }
+  //}
   else{
     seguirLinha();
   }
@@ -133,42 +122,18 @@ void Estrategia::alinhar(){
 
 void Estrategia::desviarObstaculoEsq(){
   motores.parar(500);
-  robo.ligarTodosLeds();
-  delay(500);
-  robo.desligarTodosLeds();
-  delay(500);
-  robo.ligarTodosLeds();
-  delay(500);
-  robo.desligarTodosLeds();
-  delay(500);  
-  robo.ligarTodosLeds();
-  delay(500);
-  robo.desligarTodosLeds();
-  delay(500);  
-  robo.ligarTodosLeds();
-  delay(500);
-  robo.desligarTodosLeds();
-  delay(500);  
-  robo.ligarTodosLeds();
-  delay(500);
-  robo.desligarTodosLeds();
-  delay(500);  
-  robo.ligarTodosLeds();
-  delay(500);
-  robo.desligarTodosLeds();
-  delay(500);
-  robo.ligarLedSmdVermelho();
+  robo.ligarLedVermelho();
   motores.parar(500);
   motores.girar90Esq();
   alinhar();
   motores.emFrente();
-  delay(1500);
-  motores.girar90Dir();
-  motores.emFrente();
-  delay(2500);
+  delay(1200);
   motores.girar90Dir();
   motores.emFrente();
   delay(1500);
+  motores.girar90Dir();
+  motores.emFrente();
+  delay(1200);
   alinhar();
   motores.emFrente();
   delay(300);
@@ -186,7 +151,7 @@ void Estrategia::desviarObstaculoEsq(){
       motores.emFrente();
     }
   }
-  robo.desligarLedSmdVermelho();
+  robo.desligarLedVermelho();
   estadoDeObstaculo = false;
 }
 

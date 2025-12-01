@@ -12,9 +12,12 @@ Motores m;
 void setup() {
   robo.configurar();
   Serial.begin(9600);
-  e.iniciar();
+  robo.carregarCalibracao();
+  // e.iniciar();
 }
 void loop() {
+  // m.girar90Esq();
+  // m.parar(5000);
   // m.emFrente();
   // r.getValues();
   // Serial.println("estou aqui");
